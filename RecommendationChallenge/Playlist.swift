@@ -12,7 +12,9 @@ import SwiftUI
 struct Playlist: Identifiable{
     let id = UUID()
     let title: String
-    let color: Color
+    var color: Color = Color.red
     var subtitle: String
-    var imageName: String // Asume que usarás imágenes locales
+    var imageName: String
+    var songs: [Song]?
+
 }
