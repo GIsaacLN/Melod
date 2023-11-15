@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC0583692B04B29F00ADF3AF /* LikedSongsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0583682B04B29F00ADF3AF /* LikedSongsView.swift */; };
+		EC05836B2B04B47E00ADF3AF /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC05836A2B04B47E00ADF3AF /* Playlist.swift */; };
+		EC05836D2B04BC9500ADF3AF /* WaveOverlayShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC05836C2B04BC9500ADF3AF /* WaveOverlayShape.swift */; };
 		ECCF12ED2B0402C300750B61 /* RecommendationChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF12EC2B0402C300750B61 /* RecommendationChallengeApp.swift */; };
 		ECCF12EF2B0402C300750B61 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF12EE2B0402C300750B61 /* ContentView.swift */; };
 		ECCF12F12B0402C400750B61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECCF12F02B0402C400750B61 /* Assets.xcassets */; };
@@ -14,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EC0583682B04B29F00ADF3AF /* LikedSongsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedSongsView.swift; sourceTree = "<group>"; };
+		EC05836A2B04B47E00ADF3AF /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
+		EC05836C2B04BC9500ADF3AF /* WaveOverlayShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveOverlayShape.swift; sourceTree = "<group>"; };
 		ECCF12E92B0402C300750B61 /* RecommendationChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecommendationChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECCF12EC2B0402C300750B61 /* RecommendationChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationChallengeApp.swift; sourceTree = "<group>"; };
 		ECCF12EE2B0402C300750B61 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,8 +59,11 @@
 			children = (
 				ECCF12EC2B0402C300750B61 /* RecommendationChallengeApp.swift */,
 				ECCF12EE2B0402C300750B61 /* ContentView.swift */,
+				EC0583682B04B29F00ADF3AF /* LikedSongsView.swift */,
+				EC05836A2B04B47E00ADF3AF /* Playlist.swift */,
 				ECCF12F02B0402C400750B61 /* Assets.xcassets */,
 				ECCF12F22B0402C400750B61 /* Preview Content */,
+				EC05836C2B04BC9500ADF3AF /* WaveOverlayShape.swift */,
 			);
 			path = RecommendationChallenge;
 			sourceTree = "<group>";
@@ -139,6 +148,9 @@
 			files = (
 				ECCF12EF2B0402C300750B61 /* ContentView.swift in Sources */,
 				ECCF12ED2B0402C300750B61 /* RecommendationChallengeApp.swift in Sources */,
+				EC0583692B04B29F00ADF3AF /* LikedSongsView.swift in Sources */,
+				EC05836D2B04BC9500ADF3AF /* WaveOverlayShape.swift in Sources */,
+				EC05836B2B04B47E00ADF3AF /* Playlist.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
