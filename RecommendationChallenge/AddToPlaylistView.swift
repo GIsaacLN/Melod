@@ -61,4 +61,5 @@ struct AddToPlaylistView: View {
 
 #Preview {
     AddToPlaylistView()
+        .preferredColorScheme(.dark)
 }

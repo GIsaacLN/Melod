@@ -8,12 +8,18 @@
 import SwiftUI
 
 struct PlaylistDetailView: View {
-    let playlist: Playlist
+    let playlist = Playlist(
+            title: "My Playlist #1",
+            subtitle: "Playlist",
+            imageName: "heart.fill",
+            songs: [
+            ])
+        
     @State private var showingAddToPlaylist = false
     
     var body: some View {
         // Playlist Header
-        VStack(alignment: .leading) {
+        VStack(alignment: .center) {
             Image(systemName: playlist.imageName) // Replace with actual image loading if needed
                 .resizable()
                 .scaledToFit()
@@ -77,6 +83,6 @@ struct PlaylistDetailView: View {
 }
 
 #Preview {
-    PlaylistDetailView(playlist: Playlist(title: "Liked Songs", subtitle: "2,113 songs", imageName: "heart.fill", songs: [Song(title: "Money Trees", artist: "Kendrick Lamar, Jay Rock"),         Song(title: "Reaggeton Champagne", artist: "Dany Flow")]))
+    PlaylistDetailView()
         .preferredColorScheme(.dark)
 }

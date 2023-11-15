@@ -10,8 +10,8 @@ import SwiftUI
 struct LibraryView: View {
     let playlists: [Playlist] = [
         Playlist(
-            title: "Liked Songs",
-            subtitle: "241 songs",
+            title: "My Playlist #1",
+            subtitle: "Playlist",
             imageName: "heart.fill",
             songs: [
                 Song(title: "Blinding Lights", artist: "The Weeknd"),
@@ -20,8 +20,14 @@ struct LibraryView: View {
             ]
         ),
         Playlist(
+            title: "My Playlist #2",
+            subtitle: "Playlist",
+            imageName: "globe.europe.africa.fill",
+            songs: []
+        ),
+        Playlist(
             title: "Indie Chillout",
-            subtitle: "Isaac LN",
+            subtitle: "Playlist",
             imageName: "music.note.list",
             songs: [
                 Song(title: "Breathe", artist: "Seafret"),
@@ -31,7 +37,7 @@ struct LibraryView: View {
         ),
         Playlist(
             title: "Workout Hits",
-            subtitle: "Made for Isaac LN",
+            subtitle: "Playlist",
             imageName: "repeat",
             songs: [
                 Song(title: "Stronger", artist: "Kanye West"),
@@ -41,7 +47,7 @@ struct LibraryView: View {
         ),
         Playlist(
             title: "Focus Beats",
-            subtitle: "Isaac LN",
+            subtitle: "Playlist",
             imageName: "hifispeaker.fill",
             songs: [
                 Song(title: "Lo-fi Study", artist: "Lo-Fi Beats"),
@@ -50,18 +56,8 @@ struct LibraryView: View {
             ]
         ),
         Playlist(
-            title: "Top 50 - Global",
-            subtitle: "Spotify",
-            imageName: "globe.europe.africa.fill",
-            songs: [
-                Song(title: "Bad Guy", artist: "Billie Eilish"),
-                Song(title: "Senorita", artist: "Shawn Mendes, Camila Cabello"),
-                Song(title: "Dance Monkey", artist: "Tones And I")
-            ]
-        ),
-        Playlist(
             title: "Chill Vibes",
-            subtitle: "Spotify",
+            subtitle: "Playlist",
             imageName: "person.2.fill",
             songs: [
                 Song(title: "Sunflower", artist: "Post Malone, Swae Lee"),
@@ -77,7 +73,7 @@ struct LibraryView: View {
                 Section(header: Text("Recents").font(.headline)) {
                     ForEach(playlists) { playlist in
                         // Update the destination to point to PlaylistDetailView
-                        NavigationLink(destination: PlaylistDetailView(playlist: playlist)) {
+                        NavigationLink(destination: PlaylistDetailView()) {
                             HStack {
                                 Image(systemName: playlist.imageName)
                                     .resizable()
@@ -85,7 +81,6 @@ struct LibraryView: View {
                                     .frame(width: 20, height: 20)
                                     .foregroundColor(.accentColor)
                                     .padding()
-                                    .background(Color(UIColor.systemGray6))
                                     
                                 VStack(alignment: .leading) {
                                     Text(playlist.title)
@@ -106,6 +101,8 @@ struct LibraryView: View {
                     Image(systemName: "plus")
                 }
             }
+            .listStyle(PlainListStyle())
+
         }
     }
 }

@@ -52,6 +52,8 @@
 				EC0583682B04B29F00ADF3AF /* LikedSongsView.swift */,
 				ECCF12EE2B0402C300750B61 /* ContentView.swift */,
 				EC05836C2B04BC9500ADF3AF /* WaveOverlayShape.swift */,
+				EC05836F2B04CBAB00ADF3AF /* LibraryView.swift */,
+				EC05836A2B04B47E00ADF3AF /* Playlist.swift */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -59,7 +61,6 @@
 		ECCF12E02B0402C300750B61 = {
 			isa = PBXGroup;
 			children = (
-				EC0583772B04DF5E00ADF3AF /* AddToPlaylistView.swift */,
 				ECCF12EB2B0402C300750B61 /* RecommendationChallenge */,
 				ECCF12EA2B0402C300750B61 /* Products */,
 			);
@@ -79,9 +80,8 @@
 				EC05836E2B04CB6B00ADF3AF /* Test */,
 				ECCF12EC2B0402C300750B61 /* RecommendationChallengeApp.swift */,
 				EC0583732B04D0DB00ADF3AF /* PlaylistDetailView.swift */,
-				EC05836A2B04B47E00ADF3AF /* Playlist.swift */,
+				EC0583772B04DF5E00ADF3AF /* AddToPlaylistView.swift */,
 				EC0583712B04D0C800ADF3AF /* Song.swift */,
-				EC05836F2B04CBAB00ADF3AF /* LibraryView.swift */,
 				ECCF12F02B0402C400750B61 /* Assets.xcassets */,
 				ECCF12F22B0402C400750B61 /* Preview Content */,
 			);
