@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LibraryView: View {
+    /*
     let playlists: [Playlist] = [
         Playlist(
             title: "My Playlist #1",
@@ -65,11 +66,12 @@ struct LibraryView: View {
                 Song(title: "Memories", artist: "Maroon 5")
             ]
         )
-    ]
+    ]*/
 
     var body: some View {
         NavigationView {
             List {
+                /*
                 Section(header: Text("Recents").font(.headline)) {
                     ForEach(playlists) { playlist in
                         // Update the destination to point to PlaylistDetailView
@@ -93,7 +95,7 @@ struct LibraryView: View {
                         }
                         .padding(.vertical)
                     }
-                }
+                }*/
             }
             .navigationTitle("Your Library")
             .toolbar {

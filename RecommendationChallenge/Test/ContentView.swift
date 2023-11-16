@@ -9,17 +9,19 @@ import SwiftUI
 
 struct ContentView: View {
     
-    // Array de datos para tus tarjetas
+    /* Array de datos para tus tarjetas
     let cards = [
         Playlist(title: "Daily Mix 1", color: Color.red, subtitle: "Lorem ipsum", imageName: "dailyMix1"),
         Playlist(title: "Daily Mix 2", color: Color.green, subtitle: "Lorem ipsum", imageName: "dailyMix2"),
         Playlist(title: "Daily Mix 2", color: Color.blue, subtitle: "Lorem ipsum", imageName: "dailyMix3")
     ]
+     
+     */
     
     var body: some View {
         NavigationStack {
             VStack {
-                NavigationLink(destination: LikedSongsView() ){
+                //NavigationLink(destination: PlaylistDetailView() ){
                     HStack {
                         Image(systemName: "heart.fill")
                             .foregroundColor(.white)
@@ -34,7 +36,7 @@ struct ContentView: View {
                     .background(Color.gray.opacity(0.3))
                     .cornerRadius(8)
                     .padding(.horizontal)
-                }
+               //}
                 Spacer()
                 
                 VStack(alignment: .leading) {
@@ -42,7 +44,7 @@ struct ContentView: View {
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .padding(.leading)
-                    
+                    /*
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 16) {
                             ForEach(cards) { card in
@@ -81,7 +83,7 @@ struct ContentView: View {
                             }
                         }
                         .padding(.horizontal)
-                    }
+                    }*/
                 }
                 Spacer()
             }

@@ -8,13 +8,8 @@
 import SwiftUI
 
 struct PlaylistDetailView: View {
-    let playlist = Playlist(
-            title: "My Playlist #1",
-            subtitle: "Playlist",
-            imageName: "heart.fill",
-            songs: [
-            ])
-        
+    @ObservedObject var playlist: Playlist
+
     @State private var showingAddToPlaylist = false
     
     var body: some View {
@@ -48,10 +43,10 @@ struct PlaylistDetailView: View {
                 }
                 .buttonStyle(BorderedButtonStyle())
                 .sheet(isPresented: $showingAddToPlaylist) {
-                    AddToPlaylistView()
+                    AddToPlaylistView().environmentObject(playlist)
                 }
-                
-                ForEach(playlist.songs ?? []) { song in
+
+                ForEach(playlist.songs) { song in
                     HStack {
                         VStack(alignment: .leading) {
                             Text(song.title)
@@ -62,9 +57,9 @@ struct PlaylistDetailView: View {
                         }
                         Spacer()
                         Button(action: {
-                            // Implement like action
+                            // Implement delete song action
                         }) {
-                            Image(systemName: "heart")
+                            Image(systemName: "minus.circle")
                                 .foregroundColor(.accentColor)
                         }
                         .buttonStyle(PlainButtonStyle())
@@ -83,6 +78,6 @@ struct PlaylistDetailView: View {
 }
 
 #Preview {
-    PlaylistDetailView()
+    PlaylistDetailView(playlist: Playlist(title: "My Playlist #1", subtitle: "Playlist", imageName: "heart.fill", songs: [Song(title: "Blinding Lights", artist: "The Weekend")]))
         .preferredColorScheme(.dark)
 }
