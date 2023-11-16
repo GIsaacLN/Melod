@@ -13,8 +13,8 @@
 		EC0583722B04D0C800ADF3AF /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0583712B04D0C800ADF3AF /* Song.swift */; };
 		EC0583742B04D0DB00ADF3AF /* PlaylistDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0583732B04D0DB00ADF3AF /* PlaylistDetailView.swift */; };
 		EC0583782B04DF5E00ADF3AF /* AddToPlaylistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0583772B04DF5E00ADF3AF /* AddToPlaylistView.swift */; };
-		ECC03E832B0621BD00B8619C /* songs.json in Resources */ = {isa = PBXBuildFile; fileRef = ECC03E822B0621BD00B8619C /* songs.json */; };
 		ECC03E852B06259200B8619C /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC03E842B06259200B8619C /* SearchBar.swift */; };
+		ECC03E892B06346600B8619C /* songs.json in Resources */ = {isa = PBXBuildFile; fileRef = ECC03E882B06346600B8619C /* songs.json */; };
 		ECCF12ED2B0402C300750B61 /* RecommendationChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF12EC2B0402C300750B61 /* RecommendationChallengeApp.swift */; };
 		ECCF12EF2B0402C300750B61 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF12EE2B0402C300750B61 /* ContentView.swift */; };
 		ECCF12F12B0402C400750B61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECCF12F02B0402C400750B61 /* Assets.xcassets */; };
@@ -28,8 +28,8 @@
 		EC0583712B04D0C800ADF3AF /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		EC0583732B04D0DB00ADF3AF /* PlaylistDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistDetailView.swift; sourceTree = "<group>"; };
 		EC0583772B04DF5E00ADF3AF /* AddToPlaylistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToPlaylistView.swift; sourceTree = "<group>"; };
-		ECC03E822B0621BD00B8619C /* songs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = songs.json; path = ../../songs.json; sourceTree = "<group>"; };
 		ECC03E842B06259200B8619C /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		ECC03E882B06346600B8619C /* songs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = songs.json; sourceTree = "<group>"; };
 		ECCF12E92B0402C300750B61 /* RecommendationChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecommendationChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECCF12EC2B0402C300750B61 /* RecommendationChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationChallengeApp.swift; sourceTree = "<group>"; };
 		ECCF12EE2B0402C300750B61 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -77,6 +77,7 @@
 		ECCF12EB2B0402C300750B61 /* RecommendationChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				ECC03E882B06346600B8619C /* songs.json */,
 				EC05836E2B04CB6B00ADF3AF /* Test */,
 				EC05836A2B04B47E00ADF3AF /* Playlist.swift */,
 				ECCF12EC2B0402C300750B61 /* RecommendationChallengeApp.swift */,
@@ -84,7 +85,6 @@
 				EC0583772B04DF5E00ADF3AF /* AddToPlaylistView.swift */,
 				EC0583712B04D0C800ADF3AF /* Song.swift */,
 				ECC03E842B06259200B8619C /* SearchBar.swift */,
-				ECC03E822B0621BD00B8619C /* songs.json */,
 				ECCF12F02B0402C400750B61 /* Assets.xcassets */,
 				ECCF12F22B0402C400750B61 /* Preview Content */,
 			);
@@ -157,7 +157,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECC03E832B0621BD00B8619C /* songs.json in Resources */,
+				ECC03E892B06346600B8619C /* songs.json in Resources */,
 				ECCF12F42B0402C400750B61 /* Preview Assets.xcassets in Resources */,
 				ECCF12F12B0402C400750B61 /* Assets.xcassets in Resources */,
 			);
