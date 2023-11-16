@@ -11,4 +11,7 @@ struct Song: Decodable, Identifiable, Hashable, Equatable {
     let id = UUID()
     let title: String
     let artist: String
+    var combinedTitle: String {
+        return "\(title) - \(artist)"
+    }
 }

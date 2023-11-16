@@ -10,18 +10,25 @@ import SwiftUI
 struct PlaylistDetailView: View {
     @ObservedObject var playlist: Playlist
     @State private var showingAddToPlaylist = false
+    @State private var recommendations: [String] = []
     
+    private let modelHandler = RecommendationModelHandler()
+    
+    private func updateRecommendations() {
+        recommendations = modelHandler.makePredictions(for: playlist.songs, k: 5) ?? []
+    }
     
     private func deleteSong(song: Song) {
         if let index = playlist.songs.firstIndex(of: song) {
             playlist.songs.remove(at: index)
+            updateRecommendations()
         }
     }
-
+    
     private func delete(at offsets: IndexSet) {
         playlist.songs.remove(atOffsets: offsets)
     }
-
+    
     var body: some View {
         // Playlist Header
         VStack(alignment: .center) {
@@ -53,7 +60,7 @@ struct PlaylistDetailView: View {
                 }
                 .buttonStyle(BorderedButtonStyle())
                 .sheet(isPresented: $showingAddToPlaylist) {
-                    AddToPlaylistView().environmentObject(playlist)
+                    AddToPlaylistView(modelHandler: modelHandler).environmentObject(playlist)
                 }
 
                 ForEach(playlist.songs) { song in
@@ -79,15 +86,30 @@ struct PlaylistDetailView: View {
             }
             
             Section(header: Text("Suggested For You").font(.headline)) {
-                
+                ForEach(recommendations, id: \.self) { recommendation in
+                    // Split the recommendation back into title and artist if necessary
+                    let parts = recommendation.components(separatedBy: " - ")
+                    let title = parts[0]
+                    let artist = parts.count > 1 ? parts[1] : "Unknown Artist"
+                    
+                    VStack(alignment: .leading) {
+                        Text(title)
+                            .fontWeight(.medium)
+                        Text(artist)
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
+                }
             }
         }
         .listStyle(PlainListStyle())
         .navigationBarTitleDisplayMode(.inline)
+        .onChange(of: showingAddToPlaylist, {
+            updateRecommendations()
+        })
+        .onAppear {
+            updateRecommendations()
+        }
     }
 }
 
-#Preview {
-    PlaylistDetailView(playlist: Playlist(title: "My Playlist #1", subtitle: "Playlist", imageName: "heart.fill", songs: [Song(title: "Blinding Lights", artist: "The Weekend")]))
-        .preferredColorScheme(.dark)
-}
