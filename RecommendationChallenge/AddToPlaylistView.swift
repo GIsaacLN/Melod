@@ -37,14 +37,15 @@ struct AddToPlaylistView: View {
         NavigationView {
             VStack {
                 HStack {
-                    Button("Close") {
+                    Button(action: {
                         presentationMode.wrappedValue.dismiss()
+                    }) {
+                        Image(systemName: "multiply")
                     }
                     Spacer()
                     Text("Add to this playlist")
                         .font(.headline)
                     Spacer()
-                    // If you have an icon for this, replace Text with Image
                 }
                 .padding()
 

@@ -15,6 +15,7 @@
 		EC0583782B04DF5E00ADF3AF /* AddToPlaylistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC0583772B04DF5E00ADF3AF /* AddToPlaylistView.swift */; };
 		ECC03E852B06259200B8619C /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC03E842B06259200B8619C /* SearchBar.swift */; };
 		ECC03E892B06346600B8619C /* songs.json in Resources */ = {isa = PBXBuildFile; fileRef = ECC03E882B06346600B8619C /* songs.json */; };
+		ECC03E8B2B06382000B8619C /* SongRecommender.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = ECC03E8A2B06382000B8619C /* SongRecommender.mlmodel */; };
 		ECCF12ED2B0402C300750B61 /* RecommendationChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF12EC2B0402C300750B61 /* RecommendationChallengeApp.swift */; };
 		ECCF12EF2B0402C300750B61 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF12EE2B0402C300750B61 /* ContentView.swift */; };
 		ECCF12F12B0402C400750B61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECCF12F02B0402C400750B61 /* Assets.xcassets */; };
@@ -30,6 +31,7 @@
 		EC0583772B04DF5E00ADF3AF /* AddToPlaylistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToPlaylistView.swift; sourceTree = "<group>"; };
 		ECC03E842B06259200B8619C /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		ECC03E882B06346600B8619C /* songs.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = songs.json; sourceTree = "<group>"; };
+		ECC03E8A2B06382000B8619C /* SongRecommender.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SongRecommender.mlmodel; sourceTree = "<group>"; };
 		ECCF12E92B0402C300750B61 /* RecommendationChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecommendationChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECCF12EC2B0402C300750B61 /* RecommendationChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationChallengeApp.swift; sourceTree = "<group>"; };
 		ECCF12EE2B0402C300750B61 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				ECC03E882B06346600B8619C /* songs.json */,
+				ECC03E8A2B06382000B8619C /* SongRecommender.mlmodel */,
 				EC05836E2B04CB6B00ADF3AF /* Test */,
 				EC05836A2B04B47E00ADF3AF /* Playlist.swift */,
 				ECCF12EC2B0402C300750B61 /* RecommendationChallengeApp.swift */,
@@ -179,6 +182,7 @@
 				ECC03E852B06259200B8619C /* SearchBar.swift in Sources */,
 				EC0583702B04CBAB00ADF3AF /* LibraryView.swift in Sources */,
 				EC05836B2B04B47E00ADF3AF /* Playlist.swift in Sources */,
+				ECC03E8B2B06382000B8619C /* SongRecommender.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,9 +9,19 @@ import SwiftUI
 
 struct PlaylistDetailView: View {
     @ObservedObject var playlist: Playlist
-
     @State private var showingAddToPlaylist = false
     
+    
+    private func deleteSong(song: Song) {
+        if let index = playlist.songs.firstIndex(of: song) {
+            playlist.songs.remove(at: index)
+        }
+    }
+
+    private func delete(at offsets: IndexSet) {
+        playlist.songs.remove(atOffsets: offsets)
+    }
+
     var body: some View {
         // Playlist Header
         VStack(alignment: .center) {
@@ -57,7 +67,7 @@ struct PlaylistDetailView: View {
                         }
                         Spacer()
                         Button(action: {
-                            // Implement delete song action
+                            self.deleteSong(song: song)
                         }) {
                             Image(systemName: "minus.circle")
                                 .foregroundColor(.accentColor)
