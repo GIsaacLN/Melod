@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct AddToPlaylistView: View {
-    @Environment(\.presentationMode) var presentationMode // To dismiss the view
-    @EnvironmentObject var playlist: Playlist // Playlist data
+    @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var playlist: Playlist
 
-    @State private var songs: [Song] = [] // List of all songs
-    @State private var searchText = "" // For filtering songs
-    @State private var addedSongs = Set<UUID>() // IDs of added songs
+    @State private var songs: [Song] = []
+    @State private var searchText = ""
+    @State private var showToast = false // State to control toast visibility
+    @State private var toastMessage = "" // State to hold the toast message
 
     // Load songs from a local JSON file
     func loadSongs() -> [Song] {
@@ -31,39 +32,13 @@ struct AddToPlaylistView: View {
             return []
         }
     }
-    
-    // Add a song to the playlist and update recommendations
-    private func addSong(song: Song) {
-        // Implementation to add song and update recommendations...
-        if !self.playlist.songs.contains(song) {
-            self.playlist.songs.append(song)
-            self.addedSongs.insert(song.id)
-        }
-    }
-
-    // Keep track of added songs
-    func updateAddedSongs() {
-        addedSongs = Set(playlist.songs.map { $0.id })
-    }
 
     var body: some View {
         NavigationView {
             VStack {
-                HStack {
-                    Button(action: {
-                        presentationMode.wrappedValue.dismiss()
-                    }) {
-                        Image(systemName: "multiply")
-                    }
-                    Spacer()
-                    Text("Add to this playlist")
-                        .font(.headline)
-                    Spacer()
-                }
-                .padding()
-
+                // Search bar
                 SearchBar(text: $searchText)
-                    .padding(.horizontal)
+                    .padding()
 
                 List(filteredSongs) { song in
                     HStack {
@@ -78,26 +53,49 @@ struct AddToPlaylistView: View {
                         Spacer()
 
                         Button(action: {
-                            addSong(song: song)
+                            if !playlist.songs.contains(song) {
+                                playlist.songs.append(song)
+                                toastMessage = "Added to \(playlist.title)"
+                                withAnimation {
+                                    showToast = true
+                                }
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                    withAnimation {
+                                        showToast = false
+                                    }
+                                }
+                            }
                         }) {
-                            Image(systemName: self.addedSongs.contains(song.id) ? "checkmark.circle.fill" : "plus.circle")
+                            Image(systemName: "plus.circle")
                         }
                     }
                 }
             }
+            .overlay(
+                showToast ? Toast(message: toastMessage) : nil,
+                alignment: .bottom
+            )
             .onAppear {
                 self.songs = loadSongs()
-                self.updateAddedSongs()
             }
         }
     }
     
     // Filter songs based on search text
     var filteredSongs: [Song] {
+        let nonPlaylistSongs = songs.filter { song in
+            !playlist.songs.contains(where: { $0.title == song.title && $0.artist == song.artist })
+        }
+
         if searchText.isEmpty {
-            return songs
+            return nonPlaylistSongs
         } else {
-            return songs.filter { $0.title.localizedCaseInsensitiveContains(searchText) || $0.artist.localizedCaseInsensitiveContains(searchText) }
+            return nonPlaylistSongs.filter { $0.title.localizedCaseInsensitiveContains(searchText) || $0.artist.localizedCaseInsensitiveContains(searchText) }
         }
     }
+}
+
+#Preview {
+    AddToPlaylistView()
+        .environmentObject(Playlist(title: "My Playlist #1", subtitle: "Playlist", imageName: "dailyMix2", songs: [Song(title: "Blinding Lights", artist: "The Weekend"), Song(title: "Shake It Off", artist: "Taylor Swift")]))
 }
