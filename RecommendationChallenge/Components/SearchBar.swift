@@ -9,15 +9,11 @@ import SwiftUI
 
 struct SearchBar: View {
     @Binding var text: String
-
+    
     var body: some View {
-        HStack {
+        HStack (alignment: .center){
             Image(systemName: "magnifyingglass")
             TextField("Search", text: $text)
-                .foregroundColor(.primary)
-                .padding(10)
-                .background(Color(.systemGray6))
-                .cornerRadius(10)
             if !text.isEmpty {
                 Button(action: {
                     self.text = ""
@@ -26,5 +22,9 @@ struct SearchBar: View {
                 }
             }
         }
+        .foregroundColor(.primary)
+        .padding(10)
+        .background(Color(UIColor.secondarySystemBackground))
+        .cornerRadius(10)
     }
 }

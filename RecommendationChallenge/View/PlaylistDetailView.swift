@@ -82,11 +82,14 @@ struct PlaylistDetailView: View {
                 }
                 .onDelete(perform: deleteSong) // Add this line
             }
+            VStack(alignment: .leading) {
+                Text("Recommended songs")
+                    .font(.headline)
+                Text("Based on the songs of this playlist").font(.subheadline)
+            }
+            .padding(.vertical)
             
-            Section(header: VStack(alignment: .leading) {
-                Text("Recommended songs").font(.headline)
-                Text("Based on the songs of this playlist").font(.subheadline)})
-            {
+            Section {
                 ForEach(recommendations, id: \.self) { recommendation in
                     HStack {
                         VStack(alignment: .leading) {

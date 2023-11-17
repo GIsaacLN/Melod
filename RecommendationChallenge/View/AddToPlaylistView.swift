@@ -12,11 +12,19 @@ struct AddToPlaylistView: View {
     @EnvironmentObject var playlist: Playlist
 
     @State private var songs: [Song] = []
+    @State private var recommendations: [Song] = [] // Assuming Song is the model's output
     @State private var searchText = ""
     @State private var showToast = false // State to control toast visibility
     @State private var toastMessage = "" // State to hold the toast message
+    @State private var loadingMore = false // Track if we are currently loading more items
+    @State private var allRecommendations: [String] = [] // Hold all recommendations
+    @State private var recommendationChunks: [[String]] = [] // Paginated recommendations
+    @State private var currentPage = 0 // Current page of recommendations
 
-    // Load songs from a local JSON file
+    private let modelHandler = RecommendationModelHandler()
+
+    private let pageSize = 20 // Number of recommendations to fetch per page
+
     func loadSongs() -> [Song] {
         // Implementation to load songs...
         guard let url = Bundle.main.url(forResource: "songs", withExtension: "json"),
@@ -32,6 +40,33 @@ struct AddToPlaylistView: View {
             return []
         }
     }
+    
+    private func loadAllRecommendations() {
+        allRecommendations = modelHandler.makePredictions(for: playlist.songs, k: Int.max) ?? []
+        paginateRecommendations()
+    }
+
+    private func paginateRecommendations() {
+        recommendationChunks = allRecommendations.chunked(into: pageSize)
+        if !recommendationChunks.isEmpty {
+            recommendations = recommendationChunks[0].map(transformPredictionString)
+        }
+    }
+
+    private func transformPredictionString(_ prediction: String) -> Song {
+        let components = prediction.components(separatedBy: " - ")
+        let title = components.first ?? "Unknown"
+        let artist = components.count > 1 ? components[1] : "Unknown"
+        return Song(title: title, artist: artist)
+    }
+
+    private func loadMoreRecommendationsIfNeeded(currentItem song: Song) {
+        guard let last = recommendations.last, last == song, currentPage < recommendationChunks.count - 1 else { return }
+
+        currentPage += 1
+        let moreRecommendations = recommendationChunks[currentPage].map(transformPredictionString)
+        recommendations.append(contentsOf: moreRecommendations)
+    }
 
     var body: some View {
         NavigationView {
@@ -40,47 +75,73 @@ struct AddToPlaylistView: View {
                 SearchBar(text: $searchText)
                     .padding()
 
-                List(filteredSongs) { song in
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text(song.title)
-                                .font(.headline)
-                            Text(song.artist)
-                                .font(.subheadline)
-                                .foregroundColor(.secondary)
-                        }
+                // Use ScrollView instead of List
+                ScrollView {
+                    // Use LazyVStack to only load views as needed
+                    LazyVStack {
+                        // Suggested songs header
+                        Text("Suggested songs")
+                            .font(.headline)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.leading)
+                            .padding(.top)
 
-                        Spacer()
-
-                        Button(action: {
-                            if !playlist.songs.contains(song) {
-                                playlist.songs.append(song)
-                                toastMessage = "Added to \(playlist.title)"
-                                withAnimation {
-                                    showToast = true
+                        // Songs
+                        ForEach(searchText.isEmpty ? recommendations : filteredSongs) { song in
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text(song.title)
+                                        .font(.headline)
+                                    Text(song.artist)
+                                        .font(.subheadline)
+                                        .foregroundColor(.secondary)
                                 }
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                                    withAnimation {
-                                        showToast = false
+                                Spacer()
+                                Button(action: {
+                                    guard !playlist.songs.contains(song) else { return }
+                                    playlist.songs.append(song)
+                                    toastMessage = "Added to \(playlist.title)"
+                                    withAnimation { showToast = true }
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                        withAnimation { showToast = false }
                                     }
+                                }) {
+                                    Image(systemName: "plus.circle")
                                 }
+                                .buttonStyle(PlainButtonStyle())
                             }
-                        }) {
-                            Image(systemName: "plus.circle")
+                            .padding()
+                            .background(Color(UIColor.systemBackground))
+                            .cornerRadius(8)
+                            .shadow(radius: 1)
+                            .padding(.horizontal)
+                            .onAppear {
+                                loadMoreRecommendationsIfNeeded(currentItem: song)
+                            }
                         }
+                        // Loading more view
+                        if loadingMore {
+                            ProgressView()
+                                .padding()
+                        }
+
                     }
                 }
+                .background(Color(UIColor.secondarySystemBackground)) // Match List background
+                .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                .padding(EdgeInsets(top: 0, leading: 15, bottom: 15, trailing: 15))
+
             }
-            .overlay(
-                showToast ? Toast(message: toastMessage) : nil,
-                alignment: .bottom
-            )
-            .onAppear {
-                self.songs = loadSongs()
+            .overlay(showToast ? Toast(message: toastMessage) : nil, alignment: .bottom)
+            .navigationBarTitle("Add to this playlist", displayMode: .inline)
+            .navigationBarItems(leading: Button(action: { presentationMode.wrappedValue.dismiss() }) { Image(systemName: "xmark") })
+            .onAppear{
+                songs = loadSongs()
+                loadAllRecommendations()
             }
         }
     }
-    
+
     // Filter songs based on search text
     var filteredSongs: [Song] {
         let nonPlaylistSongs = songs.filter { song in
@@ -94,6 +155,16 @@ struct AddToPlaylistView: View {
         }
     }
 }
+
+
+extension Array {
+    func chunked(into size: Int) -> [[Element]] {
+        stride(from: 0, to: count, by: size).map {
+            Array(self[$0..<Swift.min($0 + size, count)])
+        }
+    }
+}
+
 
 #Preview {
     AddToPlaylistView()
