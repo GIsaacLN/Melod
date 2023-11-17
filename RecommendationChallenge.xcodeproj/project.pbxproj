@@ -57,11 +57,39 @@
 		EC05836E2B04CB6B00ADF3AF /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				ECC03E902B063B1900B8619C /* RecommendationModelHandler.swift */,
 				ECCF12EE2B0402C300750B61 /* ContentView.swift */,
 				EC05836C2B04BC9500ADF3AF /* WaveOverlayShape.swift */,
 				EC05836F2B04CBAB00ADF3AF /* LibraryView.swift */,
 			);
 			path = Test;
+			sourceTree = "<group>";
+		};
+		ECC03E972B07ABA300B8619C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EC05836A2B04B47E00ADF3AF /* Playlist.swift */,
+				EC0583712B04D0C800ADF3AF /* Song.swift */,
+				ECC03E8E2B063A5B00B8619C /* Recommender.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		ECC03E982B07ABEA00B8619C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EC0583772B04DF5E00ADF3AF /* AddToPlaylistView.swift */,
+				EC0583732B04D0DB00ADF3AF /* PlaylistDetailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ECC03E992B07ABFC00B8619C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				ECC03E842B06259200B8619C /* SearchBar.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		ECCF12E02B0402C300750B61 = {
@@ -83,19 +111,15 @@
 		ECCF12EB2B0402C300750B61 /* RecommendationChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				ECCF12EC2B0402C300750B61 /* RecommendationChallengeApp.swift */,
+				ECC03E992B07ABFC00B8619C /* Components */,
+				ECC03E972B07ABA300B8619C /* Model */,
+				ECC03E982B07ABEA00B8619C /* View */,
 				ECC03E882B06346600B8619C /* songs.json */,
 				ECC03E942B063C9400B8619C /* SongRecommender.mlmodel */,
-				EC05836E2B04CB6B00ADF3AF /* Test */,
-				EC05836A2B04B47E00ADF3AF /* Playlist.swift */,
-				ECCF12EC2B0402C300750B61 /* RecommendationChallengeApp.swift */,
-				EC0583732B04D0DB00ADF3AF /* PlaylistDetailView.swift */,
-				EC0583772B04DF5E00ADF3AF /* AddToPlaylistView.swift */,
-				EC0583712B04D0C800ADF3AF /* Song.swift */,
-				ECC03E842B06259200B8619C /* SearchBar.swift */,
 				ECCF12F02B0402C400750B61 /* Assets.xcassets */,
 				ECCF12F22B0402C400750B61 /* Preview Content */,
-				ECC03E8E2B063A5B00B8619C /* Recommender.swift */,
-				ECC03E902B063B1900B8619C /* RecommendationModelHandler.swift */,
+				EC05836E2B04CB6B00ADF3AF /* Test */,
 			);
 			path = RecommendationChallenge;
 			sourceTree = "<group>";

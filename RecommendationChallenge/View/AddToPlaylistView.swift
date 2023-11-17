@@ -10,7 +10,6 @@ import SwiftUI
 struct AddToPlaylistView: View {
     @Environment(\.presentationMode) var presentationMode // To dismiss the view
     @EnvironmentObject var playlist: Playlist // Playlist data
-    var modelHandler: RecommendationModelHandler // For generating recommendations
 
     @State private var songs: [Song] = [] // List of all songs
     @State private var searchText = "" // For filtering songs
@@ -34,19 +33,11 @@ struct AddToPlaylistView: View {
     }
     
     // Add a song to the playlist and update recommendations
-    private func addSongToPlaylistAndUpdateRecommendations(song: Song) {
+    private func addSong(song: Song) {
         // Implementation to add song and update recommendations...
         if !self.playlist.songs.contains(song) {
             self.playlist.songs.append(song)
             self.addedSongs.insert(song.id)
-            // Update the recommendations since the playlist has changed
-            DispatchQueue.global(qos: .userInitiated).async {
-                let newRecommendations = self.modelHandler.makePredictions(for: self.playlist.songs, k: 5) ?? []
-                DispatchQueue.main.async {
-                    // It's not clear where `self.recommendations` is declared in your `AddToPlaylistView`
-                    // You might want to pass a binding to `PlaylistDetailView`'s recommendations or use another method to update it
-                }
-            }
         }
     }
 
@@ -87,7 +78,7 @@ struct AddToPlaylistView: View {
                         Spacer()
 
                         Button(action: {
-                            addSongToPlaylistAndUpdateRecommendations(song: song)
+                            addSong(song: song)
                         }) {
                             Image(systemName: self.addedSongs.contains(song.id) ? "checkmark.circle.fill" : "plus.circle")
                         }

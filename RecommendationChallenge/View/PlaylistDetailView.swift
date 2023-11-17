@@ -29,10 +29,22 @@ struct PlaylistDetailView: View {
         playlist.songs.remove(atOffsets: offsets)
     }
     
+    private func addSong(recommendation: String) {
+        let parts = recommendation.components(separatedBy: " - ")
+        let title = parts[0]
+        let artist = parts.count > 1 ? parts[1] : "Unknown Artist"
+        let song = Song(title: title, artist: artist) // Assuming `Song` can be initialized like this.
+        
+        if !self.playlist.songs.contains(where: { $0.title == song.title && $0.artist == song.artist }) {
+            self.playlist.songs.append(song)
+            updateRecommendations()
+        }
+    }
+
     var body: some View {
         // Playlist Header
         VStack(alignment: .center) {
-            Image(systemName: playlist.imageName) // Replace with actual image loading if needed
+            Image(playlist.imageName) // Replace with actual image loading if needed
                 .resizable()
                 .scaledToFit()
                 .frame(height: 120)
@@ -48,19 +60,18 @@ struct PlaylistDetailView: View {
                 .foregroundColor(.secondary)
         }
         List {
-            
             // Songs list
             Section(header: Text("Songs").font(.headline)){
                 Button(action: {
                     showingAddToPlaylist.toggle()
                 }) {
                     Image(systemName: "plus")
-                        .foregroundColor(.accentColor)
                     Text("Add to this playlist")
+                    Spacer()
                 }
                 .buttonStyle(BorderedButtonStyle())
                 .sheet(isPresented: $showingAddToPlaylist) {
-                    AddToPlaylistView(modelHandler: modelHandler).environmentObject(playlist)
+                    AddToPlaylistView().environmentObject(playlist)
                 }
 
                 ForEach(playlist.songs) { song in
@@ -79,31 +90,36 @@ struct PlaylistDetailView: View {
                             Image(systemName: "minus.circle")
                                 .foregroundColor(.accentColor)
                         }
-                        .buttonStyle(PlainButtonStyle())
                     }
-                    .padding(.vertical, 4)
                 }
             }
             
             Section(header: Text("Suggested For You").font(.headline)) {
                 ForEach(recommendations, id: \.self) { recommendation in
-                    // Split the recommendation back into title and artist if necessary
-                    let parts = recommendation.components(separatedBy: " - ")
-                    let title = parts[0]
-                    let artist = parts.count > 1 ? parts[1] : "Unknown Artist"
-                    
-                    VStack(alignment: .leading) {
-                        Text(title)
-                            .fontWeight(.medium)
-                        Text(artist)
-                            .font(.caption)
-                            .foregroundColor(.secondary)
+                    HStack {
+                        VStack(alignment: .leading) {
+                            let parts = recommendation.components(separatedBy: " - ")
+                            let title = parts[0]
+                            let artist = parts.count > 1 ? parts[1] : "Unknown Artist"
+                            
+                            Text(title)
+                                .fontWeight(.medium)
+                            Text(artist)
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                        }
+                        Spacer()
+                        Button(action: {
+                            self.addSong(recommendation: recommendation)
+                        }) {
+                            Image(systemName: "plus.circle")
+                                .foregroundColor(.accentColor)
+                        }
                     }
                 }
             }
         }
         .listStyle(PlainListStyle())
-        .navigationBarTitleDisplayMode(.inline)
         .onChange(of: showingAddToPlaylist, {
             updateRecommendations()
         })
@@ -113,3 +129,6 @@ struct PlaylistDetailView: View {
     }
 }
 
+#Preview {
+    PlaylistDetailView(playlist: Playlist(title: "My Playlist #1", subtitle: "Playlist", imageName: "dailyMix2", songs: [Song(title: "Blinding Lights", artist: "The Weekend"), Song(title: "Shake It Off", artist: "Taylor Swift")]))
+}
