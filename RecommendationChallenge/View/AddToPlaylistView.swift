@@ -112,7 +112,7 @@ struct AddToPlaylistView: View {
                                 .buttonStyle(PlainButtonStyle())
                             }
                             .padding()
-                            .background(Color(UIColor.systemBackground))
+                            .background(Color(UIColor.tertiarySystemBackground))
                             .cornerRadius(10)
                             .shadow(radius: 1)
                             .padding(.horizontal)
