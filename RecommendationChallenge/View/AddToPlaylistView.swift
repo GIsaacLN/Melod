@@ -26,7 +26,6 @@ struct AddToPlaylistView: View {
     private let pageSize = 20 // Number of recommendations to fetch per page
 
     func loadSongs() -> [Song] {
-        // Implementation to load songs...
         guard let url = Bundle.main.url(forResource: "songs", withExtension: "json"),
               let data = try? Data(contentsOf: url) else {
             return []
@@ -101,18 +100,20 @@ struct AddToPlaylistView: View {
                                     guard !playlist.songs.contains(song) else { return }
                                     playlist.songs.append(song)
                                     toastMessage = "Added to \(playlist.title)"
+                                    loadAllRecommendations()
                                     withAnimation { showToast = true }
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                                         withAnimation { showToast = false }
                                     }
                                 }) {
                                     Image(systemName: "plus.circle")
+                                        .foregroundColor(.accentColor)
                                 }
                                 .buttonStyle(PlainButtonStyle())
                             }
                             .padding()
                             .background(Color(UIColor.systemBackground))
-                            .cornerRadius(8)
+                            .cornerRadius(10)
                             .shadow(radius: 1)
                             .padding(.horizontal)
                             .onAppear {
