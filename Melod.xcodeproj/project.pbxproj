@@ -19,7 +19,7 @@
 		ECC03E912B063B1900B8619C /* RecommendationModelHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC03E902B063B1900B8619C /* RecommendationModelHandler.swift */; };
 		ECC03E952B063C9400B8619C /* SongRecommender.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = ECC03E942B063C9400B8619C /* SongRecommender.mlmodel */; };
 		ECC03E9B2B07BABB00B8619C /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC03E9A2B07BABB00B8619C /* Toast.swift */; };
-		ECCF12ED2B0402C300750B61 /* RecommendationChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF12EC2B0402C300750B61 /* RecommendationChallengeApp.swift */; };
+		ECCF12ED2B0402C300750B61 /* MelodApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF12EC2B0402C300750B61 /* MelodApp.swift */; };
 		ECCF12EF2B0402C300750B61 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCF12EE2B0402C300750B61 /* ContentView.swift */; };
 		ECCF12F12B0402C400750B61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECCF12F02B0402C400750B61 /* Assets.xcassets */; };
 		ECCF12F42B0402C400750B61 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECCF12F32B0402C400750B61 /* Preview Assets.xcassets */; };
@@ -38,8 +38,8 @@
 		ECC03E902B063B1900B8619C /* RecommendationModelHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationModelHandler.swift; sourceTree = "<group>"; };
 		ECC03E942B063C9400B8619C /* SongRecommender.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SongRecommender.mlmodel; sourceTree = "<group>"; };
 		ECC03E9A2B07BABB00B8619C /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
-		ECCF12E92B0402C300750B61 /* RecommendationChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecommendationChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		ECCF12EC2B0402C300750B61 /* RecommendationChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationChallengeApp.swift; sourceTree = "<group>"; };
+		ECCF12E92B0402C300750B61 /* Melod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Melod.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECCF12EC2B0402C300750B61 /* MelodApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MelodApp.swift; sourceTree = "<group>"; };
 		ECCF12EE2B0402C300750B61 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		ECCF12F02B0402C400750B61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ECCF12F32B0402C400750B61 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -98,7 +98,7 @@
 		ECCF12E02B0402C300750B61 = {
 			isa = PBXGroup;
 			children = (
-				ECCF12EB2B0402C300750B61 /* RecommendationChallenge */,
+				ECCF12EB2B0402C300750B61 /* Melod */,
 				ECCF12EA2B0402C300750B61 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -106,15 +106,15 @@
 		ECCF12EA2B0402C300750B61 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				ECCF12E92B0402C300750B61 /* RecommendationChallenge.app */,
+				ECCF12E92B0402C300750B61 /* Melod.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		ECCF12EB2B0402C300750B61 /* RecommendationChallenge */ = {
+		ECCF12EB2B0402C300750B61 /* Melod */ = {
 			isa = PBXGroup;
 			children = (
-				ECCF12EC2B0402C300750B61 /* RecommendationChallengeApp.swift */,
+				ECCF12EC2B0402C300750B61 /* MelodApp.swift */,
 				ECC03E992B07ABFC00B8619C /* Components */,
 				ECC03E972B07ABA300B8619C /* Model */,
 				ECC03E982B07ABEA00B8619C /* View */,
@@ -124,7 +124,7 @@
 				ECCF12F22B0402C400750B61 /* Preview Content */,
 				EC05836E2B04CB6B00ADF3AF /* Test */,
 			);
-			path = RecommendationChallenge;
+			path = Melod;
 			sourceTree = "<group>";
 		};
 		ECCF12F22B0402C400750B61 /* Preview Content */ = {
@@ -138,9 +138,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		ECCF12E82B0402C300750B61 /* RecommendationChallenge */ = {
+		ECCF12E82B0402C300750B61 /* Melod */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ECCF12F72B0402C400750B61 /* Build configuration list for PBXNativeTarget "RecommendationChallenge" */;
+			buildConfigurationList = ECCF12F72B0402C400750B61 /* Build configuration list for PBXNativeTarget "Melod" */;
 			buildPhases = (
 				ECCF12E52B0402C300750B61 /* Sources */,
 				ECCF12E62B0402C300750B61 /* Frameworks */,
@@ -150,9 +150,9 @@
 			);
 			dependencies = (
 			);
-			name = RecommendationChallenge;
+			name = Melod;
 			productName = RecommendationChallenge;
-			productReference = ECCF12E92B0402C300750B61 /* RecommendationChallenge.app */;
+			productReference = ECCF12E92B0402C300750B61 /* Melod.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -170,7 +170,7 @@
 					};
 				};
 			};
-			buildConfigurationList = ECCF12E42B0402C300750B61 /* Build configuration list for PBXProject "RecommendationChallenge" */;
+			buildConfigurationList = ECCF12E42B0402C300750B61 /* Build configuration list for PBXProject "Melod" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -183,7 +183,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				ECCF12E82B0402C300750B61 /* RecommendationChallenge */,
+				ECCF12E82B0402C300750B61 /* Melod */,
 			);
 		};
 /* End PBXProject section */
@@ -211,7 +211,7 @@
 				ECC03E8F2B063A5B00B8619C /* Recommender.swift in Sources */,
 				ECCF12EF2B0402C300750B61 /* ContentView.swift in Sources */,
 				EC0583742B04D0DB00ADF3AF /* PlaylistDetailView.swift in Sources */,
-				ECCF12ED2B0402C300750B61 /* RecommendationChallengeApp.swift in Sources */,
+				ECCF12ED2B0402C300750B61 /* MelodApp.swift in Sources */,
 				EC05836D2B04BC9500ADF3AF /* WaveOverlayShape.swift in Sources */,
 				ECC03E9B2B07BABB00B8619C /* Toast.swift in Sources */,
 				ECC03E952B063C9400B8619C /* SongRecommender.mlmodel in Sources */,
@@ -351,7 +351,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"RecommendationChallenge/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Melod/Preview Content\"";
 				DEVELOPMENT_TEAM = 457CNACK2W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -367,7 +367,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gisaaclopez.RecommendationChallenge;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gisaaclopez.Melod;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -382,7 +382,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"RecommendationChallenge/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Melod/Preview Content\"";
 				DEVELOPMENT_TEAM = 457CNACK2W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -398,7 +398,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.gisaaclopez.RecommendationChallenge;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gisaaclopez.Melod;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -409,7 +409,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		ECCF12E42B0402C300750B61 /* Build configuration list for PBXProject "RecommendationChallenge" */ = {
+		ECCF12E42B0402C300750B61 /* Build configuration list for PBXProject "Melod" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ECCF12F52B0402C400750B61 /* Debug */,
@@ -418,7 +418,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ECCF12F72B0402C400750B61 /* Build configuration list for PBXNativeTarget "RecommendationChallenge" */ = {
+		ECCF12F72B0402C400750B61 /* Build configuration list for PBXNativeTarget "Melod" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ECCF12F82B0402C400750B61 /* Debug */,
