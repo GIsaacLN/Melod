@@ -84,6 +84,7 @@ struct AddToPlaylistView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.leading)
                             .padding(.top)
+                            .accessibilityAddTraits(.isHeader)
 
                         // Songs
                         ForEach(searchText.isEmpty ? recommendations : filteredSongs) { song in
@@ -116,6 +117,21 @@ struct AddToPlaylistView: View {
                             .cornerRadius(10)
                             .shadow(radius: 1)
                             .padding(.horizontal)
+                            .accessibilityElement(children: .combine)
+                            .accessibilityLabel("\(song.title) by \(song.artist)")
+                            .accessibilityHint("Double tap to add this song")
+                            .accessibilityAction {
+                                guard !playlist.songs.contains(song) else { return }
+                                playlist.songs.append(song)
+                                toastMessage = "Added to \(playlist.title)"
+                                loadAllRecommendations()
+                                withAnimation { showToast = true }
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                    withAnimation { showToast = false }
+                                }
+
+                            }
+
                             .onAppear {
                                 loadMoreRecommendationsIfNeeded(currentItem: song)
                             }

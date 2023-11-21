@@ -44,12 +44,14 @@ struct PlaylistDetailView: View {
                 .frame(height: 200)
                 .cornerRadius(8)
                 .padding(.top)
+                .accessibility(label: Text("\(playlist.title)"))
 
             VStack(alignment: .leading) {
                 Text(playlist.title)
                     .font(.title)
                     .fontWeight(.bold)
-                
+                    .accessibility(addTraits: .isHeader)
+
                 Text(playlist.subtitle)
                     .font(.caption)
                     .foregroundColor(.secondary)
@@ -67,6 +69,7 @@ struct PlaylistDetailView: View {
                 .padding([.top,.horizontal])
             }
             .buttonStyle(PlainButtonStyle())
+            .accessibility(label: Text("Add to this playlist"))
             .sheet(isPresented: $showingAddToPlaylist) {
                 AddToPlaylistView().environmentObject(playlist)
             }
@@ -79,12 +82,14 @@ struct PlaylistDetailView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding([.leading, .top])
                         .padding(.bottom, 5)
-
+                        .accessibilityAddTraits(/*@START_MENU_TOKEN@*/.isHeader/*@END_MENU_TOKEN@*/)
+                    
                     if playlist.songs.isEmpty {
-                        Text("Your playlis list is empty.")
+                        Text("Your playlist is empty.")
                             .font(.subheadline)
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.horizontal)
+
                     } else {
                         ForEach(playlist.songs) { song in
                             HStack {
@@ -95,6 +100,7 @@ struct PlaylistDetailView: View {
                                         .font(.caption)
                                         .foregroundColor(.secondary)
                                 }
+
                                 Spacer()
                                 Button(action: {
                                     self.deleteSong(song: song)
@@ -108,27 +114,38 @@ struct PlaylistDetailView: View {
                             .cornerRadius(10)
                             .shadow(radius: 1)
                             .padding(.horizontal)
+                            .accessibilityElement(children: .ignore)
+                            .accessibilityLabel("\(song.title) by \(song.artist)")
+                            .accessibilityHint("Double tap to delete this song")
+                            .accessibilityAction {
+                                self.deleteSong(song: song)
+                            }
 
                         }
                     }
-
-                    Text("Recommended songs")
-                        .font(.headline)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding([.leading, .top])
-                    Text("Based on the songs of this playlist")
-                        .font(.subheadline)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding([.leading])
-                        .padding(.bottom, 5)
+                    
+                    VStack {
+                        Text("Recommended songs")
+                            .font(.headline)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding([.leading, .top])
+                        Text("Based on the songs of this playlist")
+                            .font(.subheadline)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding([.leading])
+                            .padding(.bottom, 5)
+                    }
+                    .accessibilityElement(children: .combine)
+                    .accessibilityAddTraits(.isHeader)
 
 
                     ForEach(recommendations, id: \.self) { recommendation in
+                        let parts = recommendation.components(separatedBy: " - ")
+                        let title = parts[0]
+                        let artist = parts.count > 1 ? parts[1] : "Unknown Artist"
                         HStack {
+
                             VStack(alignment: .leading) {
-                                let parts = recommendation.components(separatedBy: " - ")
-                                let title = parts[0]
-                                let artist = parts.count > 1 ? parts[1] : "Unknown Artist"
                                 
                                 Text(title)
                                     .fontWeight(.medium)
@@ -143,12 +160,20 @@ struct PlaylistDetailView: View {
                                 Image(systemName: "plus.circle")
                                     .foregroundColor(.accentColor)
                             }
+                            .accessibility(label: Text("Add \(title) to the playlist"))
                         }
                         .padding()
                         .background(Color(UIColor.tertiarySystemBackground))
                         .cornerRadius(10)
                         .shadow(radius: 1)
                         .padding(.horizontal)
+                        .accessibilityElement(children: .combine)
+                        .accessibilityLabel("\(title) by \(artist)")
+                        .accessibilityHint("Double tap to add this song")
+                        .accessibilityAction {
+                            self.addSong(recommendation: recommendation)
+
+                        }
                     }
                 }
             }

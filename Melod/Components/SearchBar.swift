@@ -26,5 +26,8 @@ struct SearchBar: View {
         .padding(10)
         .background(Color(UIColor.secondarySystemBackground))
         .cornerRadius(10)
+        .accessibilityElement(children: .ignore)
+        .accessibilityAddTraits(.isSearchField)
+
     }
 }
