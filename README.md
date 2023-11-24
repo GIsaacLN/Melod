@@ -4,6 +4,9 @@
 
 Melod is a simple iOS app built using SwiftUI, with a focus on integrating CoreML and CreateML for a unique music playlist experience. Inspired by Spotify, Melod allows users to select songs from a JSON-based playlist. The app then suggests additional songs to add, utilizing a custom-built song recommendation model.
 
+![Melod Poster](App%20of%20the%20Day.png)
+
+
 ## Installation
 
 Prerequisites: Requires iOS 17 on an iPhone or an iOS simulator.
