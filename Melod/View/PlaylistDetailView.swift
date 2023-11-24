@@ -44,17 +44,12 @@ struct PlaylistDetailView: View {
                 .frame(height: 200)
                 .cornerRadius(8)
                 .padding(.top)
-                .accessibility(label: Text("\(playlist.title)"))
-
+                .accessibilityHidden(true)
             VStack(alignment: .leading) {
                 Text(playlist.title)
                     .font(.title)
                     .fontWeight(.bold)
                     .accessibility(addTraits: .isHeader)
-
-                Text(playlist.subtitle)
-                    .font(.caption)
-                    .foregroundColor(.secondary)
             }
             .padding(.horizontal)
 
@@ -192,5 +187,5 @@ struct PlaylistDetailView: View {
 }
 
 #Preview {
-    PlaylistDetailView(playlist: Playlist(title: "My Playlist #1", subtitle: "Playlist", imageName: "dailyMix2", songs: [Song(title: "Blinding Lights", artist: "The Weekend"), Song(title: "Shake It Off", artist: "Taylor Swift")]))
+    PlaylistDetailView(playlist: Playlist(title: "My Playlist #1", imageName: "dailyMix2", songs: [Song(title: "Blinding Lights", artist: "The Weekend"), Song(title: "Shake It Off", artist: "Taylor Swift")]))
 }

@@ -11,13 +11,11 @@ import SwiftUI
 
 class Playlist: ObservableObject {
     var title: String
-    var subtitle: String
     var imageName: String
     @Published var songs: [Song]
 
-    init(title: String, subtitle: String, imageName: String, songs: [Song]) {
+    init(title: String, imageName: String, songs: [Song]) {
         self.title = title
-        self.subtitle = subtitle
         self.imageName = imageName
         self.songs = songs
     }

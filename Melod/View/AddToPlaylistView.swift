@@ -185,5 +185,5 @@ extension Array {
 
 #Preview {
     AddToPlaylistView()
-        .environmentObject(Playlist(title: "My Playlist #1", subtitle: "Playlist", imageName: "dailyMix2", songs: [Song(title: "Blinding Lights", artist: "The Weekend"), Song(title: "Shake It Off", artist: "Taylor Swift")]))
+        .environmentObject(Playlist(title: "My Playlist #1", imageName: "dailyMix2", songs: [Song(title: "Blinding Lights", artist: "The Weekend"), Song(title: "Shake It Off", artist: "Taylor Swift")]))
 }

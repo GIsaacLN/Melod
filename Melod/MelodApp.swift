@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct Melod: App {
-    @StateObject var playlist = Playlist(title: "My Playlist #1", subtitle: "Playlist", imageName: "dailyMix2", songs: [])
+    @StateObject var playlist = Playlist(title: "My Playlist #1", imageName: "dailyMix2", songs: [])
 
     var body: some Scene {
         WindowGroup {
